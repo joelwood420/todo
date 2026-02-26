@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2>Register</h2>
+      <form method="post">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input name="username" id="username" class="form-control" required value="{{ form.username.data if form.username.data else '' }}">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input name="email" id="email" class="form-control" required value="{{ form.email.data if form.email.data else '' }}">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" name="password" id="password" class="form-control" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

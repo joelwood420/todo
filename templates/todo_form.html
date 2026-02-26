@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}{{ action }} Todo{% endblock %}
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2>{{ action }} Todo</h2>
+      <form method="post">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input name="title" id="title" class="form-control" required value="{{ todo.title if todo else '' }}">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea name="description" id="description" class="form-control">{{ todo.description if todo else '' }}</textarea>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="completed" name="completed" {% if todo and todo.completed %}checked{% endif %}>
+          <label class="form-check-label" for="completed">Completed</label>
+        </div>
+        <button class="btn btn-primary" type="submit">{{ action }}</button>
+        <a href="{{ url_for('todos') }}" class="btn btn-secondary">Cancel</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}
